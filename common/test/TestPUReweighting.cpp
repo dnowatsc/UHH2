@@ -34,7 +34,7 @@ TestPUReweighting::TestPUReweighting(Context & ctx){
    
   //lumi_selection.reset(new LumiSelection(ctx));
 
-   h_event.reset(new EventHists(ctx, "input_Event"));
+   h_event.reset(new NTrueInteractionsHists(ctx, "input_Event"));
 }
 
 bool TestPUReweighting::process(Event & event) {

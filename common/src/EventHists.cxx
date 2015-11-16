@@ -53,3 +53,12 @@ void EventHists::fill(const uhh2::Event & e){
         ST->Fill(ht + primlep_pt + met, e.weight);
     }
 }
+
+NTrueInteractionsHists::NTrueInteractionsHists(uhh2::Context & ctx, const std::string & dirname): Hists(ctx, dirname){
+    N_TrueInteractions = book<TH1F>("N_TrueInteractions", "number of true interactions", 50, 0, 50);
+}
+
+
+void NTrueInteractionsHists::fill(const uhh2::Event & e){
+    if(e.genInfo) N_TrueInteractions->Fill(e.genInfo->pileup_TrueNumInteractions(), e.weight);
+}

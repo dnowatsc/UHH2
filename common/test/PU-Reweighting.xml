@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE JobConfiguration PUBLIC "" "JobConfig.dtd" [
-  <!ENTITY NEVT "10">
-  <!ENTITY PRESELdir "./">
-  <!ENTITY TTbar SYSTEM "../../common/datasets/RunII_25ns_v1/MC_TTbar.xml">
+  <!ENTITY NEVT "-1">
+  <!ENTITY OUTPUTDIR "/nfs/dust/cms/user/nowatsd/sFrameNew/RunII-25ns-v2/CMSSW_7_4_15_patch1/src/UHH2/PUHistogram/">
+  <!ENTITY TTbar SYSTEM "/nfs/dust/cms/user/nowatsd/sFrameNew/RunII-25ns-v2/CMSSW_7_4_15_patch1/src/UHH2/common/datasets/RunII_25ns_v2/MC_TTbar.xml">
 ]>
+
+<!--
+   <ConfigParse NEventsBreak="0" FileSplit="8" />
+   <ConfigSGE RAM ="2" DISK ="2" Mail="dominik.nowatschin@cern.de" Notification="as" Workdir="workdir"/>
+-->
 
 <JobConfiguration JobName="ExampleCycleJob" OutputLevel="INFO">
     <Library Name="libTestSUHH2common"/>
    
-   <Cycle Name="uhh2::AnalysisModuleRunner" OutputDirectory="&PRESELdir;/" PostFix="" TargetLumi="206.9" >
+   <Cycle Name="uhh2::AnalysisModuleRunner" OutputDirectory="&OUTPUTDIR;/" PostFix="" TargetLumi="1." >
 
      <!--For data use now the correct PU JSON file to get the PU profile
    
@@ -33,7 +38,7 @@
             <Item Name="JetCollection" Value="slimmedJets" />
             <Item Name="GenJetCollection" Value="slimmedGenJets" /> 
             <Item Name="METName" Value="slimmedMETsNoHF" />
-            <Item Name="TopJetCollection" Value="slimmedJetsAK8_CMSTopTag" />
+            <Item Name="TopJetCollection" Value="slimmedJetsAK8_SoftDrop" />
            <Item Name="GenParticleCollection" Value="GenParticles" /> 
 
             <Item Name="use_sframe_weight" Value="false" />
