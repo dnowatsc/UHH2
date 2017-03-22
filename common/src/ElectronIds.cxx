@@ -122,12 +122,14 @@ bool Electron_NonTrigMVAID(const Electron& ele_, const uhh2::Event&, const std::
     if                         (abs_etaSC < 0.8)   category = "low-pt_barrel1";
     else if(0.8 <= abs_etaSC && abs_etaSC < 1.479) category = "low-pt_barrel2";
     else if                    (abs_etaSC < 2.5)   category = "low-pt_endcap";
+    else return false;
   }
   else if(pt > 10.){
 
     if                         (abs_etaSC < 0.8)   category = "high-pt_barrel1";
     else if(0.8 <= abs_etaSC && abs_etaSC < 1.479) category = "high-pt_barrel2";
     else if                    (abs_etaSC < 2.5)   category = "high-pt_endcap";
+    else return false;
   }
   else return false;
 

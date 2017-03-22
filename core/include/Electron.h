@@ -198,7 +198,7 @@ class Electron : public RecParticle {
     fp.set_eta(this->eta());
     fp.set_phi(this->phi());
     fp.set_energy(this->energy());
-    fp.set_pdgId(-13*this->charge());
+    fp.set_pdgId(-11*this->charge());
 
     return fp;
   }

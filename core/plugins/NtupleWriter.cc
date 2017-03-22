@@ -1104,7 +1104,7 @@ void NtupleWriter::beginRun(edm::Run const& iRun, edm::EventSetup const&  iSetup
   }
 
   //print the LHE header to get the indices of the various systematic weights given on the sample
-  /*
+  
   edm::Handle<LHERunInfoProduct> run; 
   typedef std::vector<LHERunInfoProduct::Header>::const_iterator headers_const_iterator;
   
@@ -1118,7 +1118,7 @@ void NtupleWriter::beginRun(edm::Run const& iRun, edm::EventSetup const&  iSetup
       std::cout << lines.at(iLine);
     }
   }
-  */
+  
 }
 
 // ------------ method fills 'descriptions' with the allowed parameters for the module  ------------

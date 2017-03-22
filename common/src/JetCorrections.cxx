@@ -247,9 +247,9 @@ void correct_jet(FactorizedJetCorrector & corrector, Jet & jet, const Event & ev
     jet.set_JEC_factor_raw(1. / correctionfactor);
 }
 
-JetCorrectionUncertainty* corrector_uncertainty(uhh2::Context & ctx, const std::vector<std::string> & filenames, int &direction){
+JetCorrectionUncertainty* corrector_uncertainty(uhh2::Context & ctx, const std::vector<std::string> & filenames, int &direction, std::string unc_fix = ""){
     
-    auto dir = ctx.get("jecsmear_direction", "nominal");
+    auto dir = unc_fix != "" ? unc_fix : ctx.get("jecsmear_direction", "nominal");
     if(dir == "up"){
         direction = 1;
     }
@@ -359,10 +359,10 @@ bool GenericJetCorrector::process(uhh2::Event & event){
 // note: implement here because only here (and not in the header file), the destructor of FactorizedJetCorrector is known
 GenericJetCorrector::~GenericJetCorrector(){}
 
-GenericTopJetCorrector::GenericTopJetCorrector(uhh2::Context & ctx, const std::vector<std::string> & filenames, const std::string & collectionname){
+GenericTopJetCorrector::GenericTopJetCorrector(uhh2::Context & ctx, const std::vector<std::string> & filenames, const std::string & collectionname, std::string unc_fix){
     corrector = build_corrector(filenames);
     direction = 0;
-    jec_uncertainty = corrector_uncertainty(ctx, filenames, direction) ;
+    jec_uncertainty = corrector_uncertainty(ctx, filenames, direction, unc_fix) ;
     h_jets = ctx.get_handle<std::vector<TopJet> >(collectionname);
 }
     

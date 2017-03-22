@@ -44,13 +44,21 @@ public:
     explicit CollectionProducer(Context & ctx,
                                 std::string const & in_name,
                                 std::string const & out_name,
-                                boost::optional<TYPE_ID_FUNC> const & type_id = boost::none):
+                                boost::optional<TYPE_ID_FUNC> const & type_id = boost::none,
+                                bool write_out = false):
         in_hndl(ctx.get_handle<vector<TYPE>>(in_name)),
         out_hndl(ctx.get_handle<vector<TYPE>>(out_name)),
-        type_id_(type_id) {}
+        type_id_(type_id) {
+            if (write_out)
+                out_hndl = ctx.declare_event_output<vector<TYPE>>(out_name);
+        }
 
     bool process(Event & event) override {
         vector<TYPE> out_coll;
+        if (!event.is_valid(in_hndl)) {
+            event.set(out_hndl, out_coll);
+            return false;
+        }
         for(const TYPE & obj : event.get(in_hndl)){
             if (type_id_){
                 if ((*type_id_)(obj, event)) {

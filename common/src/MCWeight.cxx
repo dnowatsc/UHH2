@@ -502,6 +502,9 @@ std::tuple<float, float, float> MCBTagScaleFactor::get_weight_btag(const vector<
   if (isnan(wtbtagErrUDSG)) {
     throw runtime_error("wtbtagErrUDSG" + errStr);
   }
+  if (wtbtag <= 0 ) {
+    std::cout << wtbtag << " " << wtbtagErrBC << " " << wtbtagErrUDSG << " " << std::endl;
+  }
 
   return std::make_tuple(wtbtag, wtbtagErrBC, wtbtagErrUDSG);
 }

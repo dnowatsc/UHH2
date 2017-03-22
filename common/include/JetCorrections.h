@@ -114,7 +114,7 @@ private:
 
 class GenericTopJetCorrector: public uhh2::AnalysisModule {
 public:
-    explicit GenericTopJetCorrector(uhh2::Context & ctx, const std::vector<std::string> & filenames, const std::string & collectionname);
+    explicit GenericTopJetCorrector(uhh2::Context & ctx, const std::vector<std::string> & filenames, const std::string & collectionname, std::string unc_fix = "");
     
     virtual bool process(uhh2::Event & event) override;
     

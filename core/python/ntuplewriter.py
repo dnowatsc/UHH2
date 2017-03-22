@@ -37,12 +37,12 @@ process.source = cms.Source("PoolSource",
   fileNames  = cms.untracked.vstring([
 #    '/store/mc/RunIISpring15MiniAODv2/TT_TuneCUETP8M1_13TeV-powheg-pythia8/MINIAODSIM/74X_mcRun2_asymptotic_v2-v1/40000/00087FEB-236E-E511-9ACB-003048FF86CA.root',
 #    '/store/data/Run2015C_25ns/SingleMuon/MINIAOD/16Dec2015-v1/00000/002C22D4-E1AF-E511-AE8E-001E673971CA.root',
-    '/store/mc/RunIIFall15MiniAODv2/LQLQToTopMu_M-1200_TuneCUETP8M1_13TeV_pythia8/MINIAODSIM/PU25nsData2015v1_76X_mcRun2_asymptotic_v12-v1/60000/2283B483-37B8-E511-A109-6CC2173D7CD0.root',
+    '/store/mc/RunIIFall15MiniAODv2/WW_TuneCUETP8M1_13TeV-pythia8/MINIAODSIM/PU25nsData2015v1_76X_mcRun2_asymptotic_v12-v1/60000/0EE6E0B8-FFB7-E511-B0C6-0025904CDDFA.root',
   ]),
   skipEvents = cms.untracked.uint32(0)
 )
 
-process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(100))
+process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(1))
 
 # Grid-control changes:
 gc_maxevents = '__MAX_EVENTS__'
